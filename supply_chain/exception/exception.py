@@ -3,16 +3,6 @@ from typing import Optional
 
 
 def get_detailed_error_message(error: Exception, error_detail: sys) -> str:
-    """
-    Generate a detailed error message with file name, line number, and error description.
-    
-    Args:
-        error (Exception): The exception object
-        error_detail (sys): The sys module to extract traceback information
-    
-    Returns:
-        str: Formatted error message with full context
-    """
     # Extract traceback information
     _, _, exc_tb = error_detail.exc_info()
     
@@ -37,31 +27,7 @@ def get_detailed_error_message(error: Exception, error_detail: sys) -> str:
 
 
 class SupplyChainException(Exception):
-    """
-    Custom exception class for Supply Chain Optimization project.
-    
-    Provides detailed error information including:
-    - File name where error occurred
-    - Line number of the error
-    - Function name where error occurred
-    - Original error message
-    
-    Usage:
-        try:
-            # your code
-            result = risky_operation()
-        except Exception as e:
-            raise SupplyChainException(e, sys)
-    """
-    
     def __init__(self, error_message: Exception, error_detail: sys):
-        """
-        Initialize custom exception with detailed error context.
-        
-        Args:
-            error_message (Exception): The original exception
-            error_detail (sys): The sys module for traceback extraction
-        """
         super().__init__(error_message)
         self.error_message = get_detailed_error_message(error_message, error_detail)
     

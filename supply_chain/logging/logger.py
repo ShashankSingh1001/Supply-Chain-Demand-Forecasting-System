@@ -95,4 +95,4 @@ if __name__ == "__main__":
     test_logger.error("This is an ERROR message")
     test_logger.critical("This is a CRITICAL message")
     
-    print(f"\n✅ Log file created at: {LOG_FILE_PATH}")
+    print(f"\n Log file created at: {LOG_FILE_PATH}")

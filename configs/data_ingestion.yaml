@@ -1,0 +1,64 @@
+# ================================
+# DATA INGESTION CONFIGURATION
+# ================================
+
+# Output format for processed data
+save_format: "parquet"  
+
+# Enable data validation checks
+enable_validation: true
+
+# Chunk size for reading large CSV files (rows per chunk)
+chunk_size: null
+
+# Date columns that need parsing
+date_columns:
+  train: ["date"]
+  test: ["date"]
+  holidays_events: ["date"]
+  oil: ["date"]
+  transactions: ["date"]
+
+# Columns to parse as dates (format auto-detected)
+parse_dates: true
+
+# Validation thresholds
+validation:
+  # Minimum rows expected per file (for sanity checks)
+  min_rows:
+    train: 100000
+    test: 1000
+    items: 100
+    stores: 10
+    holidays_events: 50
+    oil: 100
+    transactions: 1000
+  
+  # Maximum allowed missing percentage per file
+  max_missing_percentage: 30.0
+  
+  # Check for duplicate rows
+  check_duplicates: true
+  
+  # Expected date range (optional validation)
+  expected_date_range:
+    start_year: 2013
+    end_year: 2017
+
+# Drop rows with all NaN values
+drop_all_nan_rows: true
+
+# Drop duplicate rows (keep first occurrence)
+drop_duplicates: true
+
+# Convert 'onpromotion' to boolean (if present)
+convert_onpromotion_to_bool: true
+
+# Generate ingestion report (JSON format)
+generate_report: true
+
+# Include data profiling in report (shape, dtypes, missing values)
+include_profiling: true
+
+# Log level for this component (DEBUG, INFO, WARNING, ERROR)
+log_level: "INFO"
