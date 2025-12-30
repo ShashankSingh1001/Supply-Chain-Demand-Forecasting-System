@@ -85,3 +85,12 @@ Thumbs.db
 *.tmp
 *.bak
 *.swp
+
+# Data & artifacts
+data/
+artifacts/
+
+# Large data formats
+*.parquet
+*.csv
+*.zip
